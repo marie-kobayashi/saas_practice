@@ -16,14 +16,15 @@ gulp.task('css', function(){
   return gulp.src('client/templates/*.less')
     .pipe(less())
     .pipe(minifyCSS())
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('./build/css'))
 });
 
 // SassとCssの保存先を指定
 gulp.task('sass', function(){
-  gulp.src('./sass/**/*.scss')
+  // gulp.src('./sass/**/*.scss')
+  gulp.src('./sass/*.scss')
     .pipe(sass({outputStyle: 'expanded'}))
-    .pipe(gulp.dest('./css/'));
+    .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('js', function(){
@@ -31,7 +32,7 @@ gulp.task('js', function(){
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('build/js'))
+    .pipe(gulp.dest('./build/js'))
 });
 
 //自動監視のタスクを作成(sass-watchと名付ける)
@@ -41,4 +42,10 @@ gulp.task('sass-watch', ['sass'], function(){
   });
 });
 
-gulp.task('default', [ 'html', 'css', 'sass', 'js','sass-watch']);
+gulp.task('default', [ 
+  'html',
+  'css',
+  'sass',
+  'js',
+  // 'sass-watch',
+  ]);
