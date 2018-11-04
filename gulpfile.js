@@ -34,4 +34,11 @@ gulp.task('js', function(){
     .pipe(gulp.dest('build/js'))
 });
 
-gulp.task('default', [ 'html', 'css', 'sass', 'js']);
+//自動監視のタスクを作成(sass-watchと名付ける)
+gulp.task('sass-watch', ['sass'], function(){
+  var watcher = gulp.watch('./sass/**/*.scss', ['sass']);
+  watcher.on('change', function(event) {
+  });
+});
+
+gulp.task('default', [ 'html', 'css', 'sass', 'js','sass-watch']);
