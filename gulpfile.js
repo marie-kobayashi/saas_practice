@@ -6,11 +6,18 @@ var minifyCSS = require('gulp-csso');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
+// pugは一旦使わない。多分テンプレート。暇だったらググってみる。
+// gulp.task('html', function(){
+//   return gulp.src('client/templates/*.pug')
+//     .pipe(pug())
+//     .pipe(gulp.dest('build/html'))
+// });
+
 gulp.task('html', function(){
-  return gulp.src('client/templates/*.pug')
-    .pipe(pug())
+  return gulp.src('client/*.html')
     .pipe(gulp.dest('build/html'))
 });
+
 
 gulp.task('css', function(){
   return gulp.src('client/templates/*.less')
